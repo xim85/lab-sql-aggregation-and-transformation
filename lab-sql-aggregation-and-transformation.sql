@@ -11,10 +11,8 @@ SELECT FLOOR(AVG(length) / 60) AS hours, ROUND(AVG(length) % 60) AS minutes
 FROM film; 
 
 --Calculate the number of days that the company has been operating--
-SELECT DATEDIFF(MAX(rental_date), MIN(rental_date))
-FROM rental;
-SELECT rental_date
-FROM rental;
+SELECT DATEDIFF(MAX(rental_date), MIN(rental_date)) AS active_days FROM rental;
+
 -- Retrieve rental information and add two additional columns to show the month and weekday of the rental. Return 20 rows of results --
 SELECT rental_id,
        rental_date,
