@@ -3,16 +3,12 @@ USE sakila;
 
 
 -- Determine the shortest and longest movie durations and name the values as max_duration and min_duration--
-SELECT MIN(length)
-FROM film
-AS min_duration;
-SELECT MAX(length)
-FROM film
-AS max_duration;
+SELECT MAX(length) AS max_duration, MIN(length) AS min_duration 
+FROM film; 
 
 -- Express the average movie duration in hours and minutes. Don't use decimals.--
-SELECT ROUND(AVG(length) / 60, 2) AS average_length_hours
-FROM film;
+SELECT FLOOR(AVG(length) / 60) AS hours, ROUND(AVG(length) % 60) AS minutes 
+FROM film; 
 
 --Calculate the number of days that the company has been operating--
 SELECT DATEDIFF(MAX(rental_date), MIN(rental_date))
@@ -62,8 +58,8 @@ ORDER BY last_name ASC;
 
 SE
 -- The total number of films that have been released.--
-SELECT COUNT (release_year)
-FROM film;
+SELECT COUNT(*) AS 'num_films' FROM film; 
+
 -- The number of films for each rating.--
 SELECT rating, COUNT(*) AS number_of_films
 FROM film
